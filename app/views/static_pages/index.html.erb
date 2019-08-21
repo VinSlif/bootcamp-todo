@@ -17,8 +17,11 @@
 	$(function() {
 		$('#new-form').submit(function(event) {
 			event.preventDefault();
-			let textBox = $('.new-todo')
-			console.log(textBox.val());
+			$.post('/tasks', { task: { 
+					title: $('.new-todo').val() }
+				}).success(function(data) {
+					console.log('Successful HTTP Request');
+			});
 		});
 
 		// The taskHtml method takes in a JavaScript representation
