@@ -15,4 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require paloma
+//= require initializer
+//= require page_specific/tasks
 //= require_tree .
