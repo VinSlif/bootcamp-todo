@@ -1,14 +1,18 @@
 var TodoController = Paloma.controller('StaticPages')
 
-TodoController.prototype.index = function () {
+// TodoController.prototype.index = function () {
+$(function () {
 	// The taskHtml method takes in a JavaScript representation
 	// of the task and produces an HTML representation using
 	// <li> tags
 	function taskHtml(task) {
-		return '<li><div class="view"><input class="toggle" type="checkbox" ' +
+		return '<li id="listItem-' + task.id +
+			'" class="' + (task.done ? "completed" : "") +
+			'"><div class="view"><input id="check-' + task.id +
+			'" class="toggle" type="checkbox" ' +
 			'data-id="' + task.id + '" ' +
 			(task.done ? 'checked' : '') +
-			'><label>' +
+			' /><label for="check-' + task.id + '">' +
 			task.title +
 			'</label></div></li>';
 	}
@@ -23,6 +27,9 @@ TodoController.prototype.index = function () {
 			task: {
 				done: Boolean($(e.target).is(':checked'))
 			}
+		}).success(function (data) {
+			$("#listItem-" + data.id).replaceWith(taskHtml(data));
+			$('.toggle').change(toggleTask);
 		});
 	}
 
@@ -48,4 +55,5 @@ TodoController.prototype.index = function () {
 			$('.new-todo').val('');
 		});
 	});
-}
+	// }
+});
