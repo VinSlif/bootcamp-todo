@@ -15,15 +15,6 @@
 
 <script>
 	$(function() {
-		$('#new-form').submit(function(event) {
-			event.preventDefault();
-			$.post('/tasks', { task: { 
-					title: $('.new-todo').val() }
-				}).success(function(data) {
-					console.log('Successful HTTP Request');
-			});
-		});
-
 		// The taskHtml method takes in a JavaScript representation
 		// of the task and produces an HTML representation using
 		// <li> tags
@@ -55,6 +46,16 @@
 			$('.todo-list').html(htmlString);
 
 			$('.toggle').change(toggleTask);
+		});
+
+		$('#new-form').submit(function(event) {
+			event.preventDefault();
+			$.post('/tasks', { task: { 
+					title: $('.new-todo').val() }
+				}).success(function(data) {
+					$('.todo-list').append(taskHtml(data));
+					$('.toggle').click(toggleTask);
+			});
 		});
 	});
 </script>
