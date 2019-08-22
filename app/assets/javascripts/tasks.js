@@ -1,7 +1,4 @@
-var TodoController = Paloma.controller('StaticPages')
-
-// TodoController.prototype.index = function () {
-$(function () {
+$('.static_pages.index').ready(function() {
 	// The taskHtml method takes in a JavaScript representation
 	// of the task and produces an HTML representation using
 	// <li> tags
@@ -55,5 +52,4 @@ $(function () {
 			$('.new-todo').val('');
 		});
 	});
-	// }
 });

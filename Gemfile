@@ -71,4 +71,4 @@ end
 gem 'jquery-rails'
 
 # Adds page-sepcific js
-gem 'paloma', '~> 5.1.0'
+# gem 'paloma', '~> 5.1.0'
